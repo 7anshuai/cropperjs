@@ -430,6 +430,13 @@ The minimum height of the crop box.
 
 **Note:** This size is relative to the page, not the image.
 
+### error
+
+- Type: `Function`
+- Default: `null`
+
+A shortcut of the `error` event.
+
 ### ready
 
 - Type: `Function`
@@ -904,6 +911,10 @@ Change the drag mode.
 [⬆ back to top](#table-of-contents)
 
 ## Events
+
+### error
+
+This event fires when the target image load failed.
 
 ### ready
 

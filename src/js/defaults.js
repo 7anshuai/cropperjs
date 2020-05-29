@@ -91,6 +91,7 @@ export default {
   minContainerHeight: 100,
 
   // Shortcuts of events
+  error: null,
   ready: null,
   cropstart: null,
   cropmove: null,

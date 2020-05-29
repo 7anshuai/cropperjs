@@ -13,6 +13,7 @@ import {
   CLASS_INVISIBLE,
   CLASS_MOVE,
   DATA_ACTION,
+  EVENT_ERROR,
   EVENT_READY,
   MIME_TYPE_JPEG,
   NAMESPACE,
@@ -228,7 +229,16 @@ class Cropper {
     image.alt = element.alt || 'The image to crop';
     this.image = image;
     image.onload = this.start.bind(this);
-    image.onerror = this.stop.bind(this);
+    if (isFunction(this.options.error)) {
+      addListener(element, EVENT_ERROR, this.options.error, {
+        once: true,
+      });
+    }
+    image.onerror = (error) => {
+      const stop = this.stop.bind(this);
+      dispatchEvent(element, EVENT_ERROR, error);
+      stop();
+    };
     addClass(image, CLASS_HIDE);
     element.parentNode.insertBefore(image, element.nextSibling);
   }

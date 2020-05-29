@@ -111,6 +111,7 @@ declare namespace Cropper {
     modal?: boolean;
     movable?: boolean;
     preview?: Element | Element[] | NodeList | string;
+    error?(event: CustomEvent): void;
     ready?(event: CustomEvent): void;
     responsive?: boolean;
     restore?: boolean;
